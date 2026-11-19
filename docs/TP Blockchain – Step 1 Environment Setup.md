@@ -6,7 +6,7 @@ Supply chain traceability on Ethereum (TP section 3, Étape 1)
 
 The first section of the TP has three parts: MetaMask (optional for now), opening Remix IDE, and creating the contract file. Only MetaMask can be postponed, since Remix has a built-in simulated blockchain. You will truly need MetaMask at the Sepolia deployment step (step 8).
 
-## 3.1 MetaMask (optional for now)
+## 3.1 MetaMask:
 
 Setting it up now is quick and gives good material for your first doc.
 
@@ -14,6 +14,12 @@ Setting it up now is quick and gives good material for your first doc.
 2. Create a new wallet and write the recovery phrase on paper. Do not save it in a file, a screenshot or the repo.
 3. Use this wallet only for the TP, never with real funds.
 4. Do not screenshot the recovery phrase or private key, including for the docs. Screenshot only the account address or network.
+
+<img width="1902" height="936" alt="image" src="https://github.com/user-attachments/assets/fb426533-9276-43b0-9562-f608fce3cdbd" />
+<img width="1901" height="937" alt="image" src="https://github.com/user-attachments/assets/ebb1ad2a-fae7-441e-b2fa-1481a5f3678e" />
+<img width="1918" height="930" alt="image" src="https://github.com/user-attachments/assets/16609073-9de7-4179-8b3b-e68c6d22fd92" />
+<img width="1918" height="933" alt="image" src="https://github.com/user-attachments/assets/b9ff4241-5d57-4ca6-9309-c5e2a96ab064" />
+
 
 ## 3.2 Open Remix
 
