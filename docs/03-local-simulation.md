@@ -14,7 +14,7 @@ The contract was deployed on the **Remix VM**, a temporary in-browser blockchain
 4. Click **Deploy**. The constructor takes no arguments.
 5. Expand the contract under **Deployed Contracts**.
 
-![Deployment on Remix VM](screenshots/03-deploy-remix-vm.png)
+![Deployment on Remix VM](screenshots/03/03-deploy-remix-vm.png)
 
 ### Initial state checks
 
@@ -26,9 +26,9 @@ After deployment, the public getters were used to check the initial state:
 | `nextLotId` | `1` | The counter starts at 1 |
 | `roles(<Account 1 address>)` | `1` (Supplier) | The constructor gives the deployer the Supplier role |
 
-![Initial state of the deployed contract- owner](screenshots/03-01-deployed-contract-initial-state.png)
-![Initial state of the deployed contract- nextLotId](screenshots/03-02-deployed-contract-initial-state.png)
-![Initial state of the deployed contract- roles](screenshots/03-03-deployed-contract-initial-state.png)
+![Initial state of the deployed contract- owner](screenshots/03/03-01-deployed-contract-initial-state.png)
+![Initial state of the deployed contract- nextLotId](screenshots/03/03-02-deployed-contract-initial-state.png)
+![Initial state of the deployed contract- roles](screenshots/03/03-03-deployed-contract-initial-state.png)
 
 > The Remix VM is temporary. Reloading the page erases the deployed contract and all its data, so the whole simulation below has to be done in one session.
 
@@ -53,9 +53,9 @@ From Account 1 (the owner), `assignRole(actor, role)` was called three times:
 
 Each call emits a `RoleAssigned` event, visible in the Remix terminal.
 
-![Role assignment](screenshots/03-01-assign-roles.png)
-![Role assignment](screenshots/03-02-assign-roles.png)
-![Role assignment](screenshots/03-03-assign-roles.png)
+![Role assignment](screenshots/03/03-01-assign-roles.png)
+![Role assignment](screenshots/03/03-02-assign-roles.png)
+![Role assignment](screenshots/03/03-03-assign-roles.png)
 
 ## 3. Following one lot through the chain
 
@@ -74,7 +74,7 @@ The example lot is a batch of olive oil, following the TP's case study.
 
 The lot receives ID `1`, because `nextLotId` started at 1. The contract also writes the first history step automatically and emits `LotCreated` and `StepRecorded`. Calling `getLot(1)` returns the stored data with status `0` (Created).
 
-![Lot creation](screenshots/03-create-lot.png)
+![Lot creation](screenshots/03/03-create-lot.png)
 
 ### Step 2 – Processing (Manufacturer, Account 2)
 
@@ -88,7 +88,7 @@ The lot receives ID `1`, because `nextLotId` started at 1. The contract also wri
 | `location` | Sfax, Tunisie |
 | `documentHash` | `0x` followed by 64 zeros (no document attached) |
 
-![Processed step](screenshots/03-record-processed.png)
+![Processed step](screenshots/03/03-record-processed.png)
 
 ### Step 3 – Transport (Carrier, Account 3)
 
@@ -100,7 +100,7 @@ The lot receives ID `1`, because `nextLotId` started at 1. The contract also wri
 | `location` | Sfax – Tunis |
 | `documentHash` | `0x` followed by 64 zeros |
 
-![InTransit step](screenshots/03-record-in-transit.png)
+![InTransit step](screenshots/03/03-record-in-transit.png)
 
 ### Step 4 – Delivery (Distributor, Account 4)
 
@@ -112,7 +112,7 @@ The lot receives ID `1`, because `nextLotId` started at 1. The contract also wri
 | `location` | Tunis, Tunisie |
 | `documentHash` | `0x` followed by 64 zeros |
 
-![Delivered step](screenshots/03-record-delivered.png)
+![Delivered step](screenshots/03/03-record-delivered.png)
 
 The order and the account used at each step matter: the contract rejects a step if the caller does not have the required role or if the lot is not in the required previous state. These rejections are tested separately in the security tests document.
 
@@ -131,13 +131,13 @@ After the delivery, the read-only functions were used to check the result:
 
 Each step shows the address of the account that recorded it and the timestamp of its transaction, which lets anyone check who did what and when.
 
-![Final lot state](screenshots/03-lot-final-state.png)
+![Final lot state](screenshots/03/03-lot-final-state.png)
 
-![History Count](screenshots/03-history-count.png)
-![History steps (1, 0)](screenshots/03-history-steps-1-0.png)
-![History steps (1, 1)](screenshots/03-history-steps-1-1.png)
-![History steps (1, 2)](screenshots/03-history-steps-1-2.png)
-![History steps (1, 3)](screenshots/03-history-steps-1-3.png)
+![History Count](screenshots/03/03-history-count.png)
+![History steps (1, 0)](screenshots/03/03-history-steps-1-0.png)
+![History steps (1, 1)](screenshots/03/03-history-steps-1-1.png)
+![History steps (1, 2)](screenshots/03/03-history-steps-1-2.png)
+![History steps (1, 3)](screenshots/03/03-history-steps-1-3.png)
 
 ## 5. Observations
 
