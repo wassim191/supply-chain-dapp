@@ -89,6 +89,7 @@
   async function lookupLot() {
     requireContract();
     const lotId = parsePositiveInt($("lotId").value, "Lot ID");
+    const started = performance.now();
 
     const lot = await contract.getLot(lotId);
     const count = Number(await contract.getHistoryCount(lotId));
@@ -119,7 +120,10 @@
     }
     $("history").replaceChildren(...items);
 
-    setMessage("Lot " + lotId.toString() + " loaded (" + count + " steps).");
+    setMessage(
+      "Lot " + lotId.toString() + " loaded (" + count + " steps) in " +
+      Math.round(performance.now() - started) + " ms."
+    );
   }
 
   // ---- Creating a lot ----
@@ -154,14 +158,17 @@
     }
 
     const tx = await contract.createLot(productName, quantity, unit, origin);
+    const sentAt = performance.now();
     setMessage("Transaction sent: " + tx.hash + " (waiting for confirmation...)");
 
     const receipt = await tx.wait();
+    const seconds = ((performance.now() - sentAt) / 1000).toFixed(1);
     const lotId = lotIdFromReceipt(receipt);
 
     setMessage(
       (lotId !== null ? "Lot " + lotId.toString() + " created. " : "Lot created. ") +
-      "Transaction: " + receipt.hash
+      "Transaction: " + receipt.hash +
+      " (confirmed in " + seconds + " s, gas used: " + receipt.gasUsed.toString() + ")"
     );
 
     if (lotId !== null) {
@@ -191,10 +198,15 @@
     const tx = await contract.recordStep(
       lotId, status, description, location, hashInput || EMPTY_HASH
     );
+    const sentAt = performance.now();
     setMessage("Transaction sent: " + tx.hash + " (waiting for confirmation...)");
 
     const receipt = await tx.wait();
-    setMessage("Step confirmed. Transaction: " + receipt.hash);
+    const seconds = ((performance.now() - sentAt) / 1000).toFixed(1);
+    setMessage(
+      "Step confirmed. Transaction: " + receipt.hash +
+      " (confirmed in " + seconds + " s, gas used: " + receipt.gasUsed.toString() + ")"
+    );
   }
 
   // ---- Wiring ----
