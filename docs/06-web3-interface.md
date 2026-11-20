@@ -88,7 +88,7 @@ The form is not a security mechanism. The contract itself checks the role of the
 
 ![Lot lookup and history](screenshots/06/06-lot-history.png)
 
-The transaction fee for creating the lot was `<fee from Etherscan>` Sepolia ETH, to be compared with the deployment fee of 0.0263 ETH. These values are collected for the evaluation section.
+The transaction fee for creating the lot was `0.002058` Sepolia ETH, to be compared with the deployment fee of 0.0263 ETH. These values are collected for the evaluation section.
 
 ### Rejection of a forbidden operation
 
