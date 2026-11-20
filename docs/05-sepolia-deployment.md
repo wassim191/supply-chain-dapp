@@ -49,9 +49,9 @@ A deployment is an Ethereum transaction that stores the contract code on the sel
 |---|---|---|
 | Network | Sepolia | MetaMask confirmation screen
 | Chain ID | 11155111 | Remix’s Deploy panel tag
-| Contract address | `0x0e236F0C90e51D4Fe4fd829522C306543EAEEd72` | The "from" field of the eth_sendTransaction line (MetaMask shows the same address as 0x99403...033B2)
-| Deployer address | `0x99403aae3e7092bacf20fbeb65c30f50b4a033b2` | The parameter in the eth_getTransactionReceipt lines, which Remix sent after the wallet returned the hash
-| Deployment transaction hash | `0xae621712f28412410f5fec948e9fba2d9c55857001e3e6ab05caaa7f403f3c05` |
+| Contract address | `0x0e236F0C90e51D4Fe4fd829522C306543EAEEd72` | Open Deployed Contracts in the Deploy panel and click the copy icon next to SupplyChain.
+| Deployer address | `0x99403aae3e7092bacf20fbeb65c30f50b4a033b2` |  The "from" field of the eth_sendTransaction line (MetaMask shows the same address as 0x99403...033B2)
+| Deployment transaction hash | `0xae621712f28412410f5fec948e9fba2d9c55857001e3e6ab05caaa7f403f3c05` | The parameter in the eth_getTransactionReceipt lines, which Remix sent after the wallet returned the hash
 | Solidity compiler version | 0.8.34 | The end of the deployment bytecode encodes the compiler version, and it matches
 | Contract source | `contracts/SupplyChain.sol` |
 | ABI | available from Remix (Compile tab, ABI button) |

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supply Chain Traceability – Ethereum</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.5/dist/ethers.umd.min.js"></script>
+  <script src="config.js"></script>
+  <script src="abi.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>Supply Chain Traceability</h1>
+
+    <section>
+      <button id="connect">Connect MetaMask</button>
+      <p id="account">Wallet not connected</p>
+      <p id="network"></p>
+      <p id="role"></p>
+    </section>
+
+    <p id="message" role="status"></p>
+
+    <section>
+      <h2>Look up a lot</h2>
+      <label for="lotId">Lot ID</label>
+      <input id="lotId" type="number" min="1" value="1">
+      <button id="lookup">Search</button>
+      <div id="lotResult"></div>
+      <h3>History</h3>
+      <ol id="history"></ol>
+    </section>
+
+    <section>
+      <h2>Create a lot (Supplier only)</h2>
+      <label for="productName">Product name</label>
+      <input id="productName" placeholder="Extra virgin olive oil">
+
+      <label for="quantity">Quantity</label>
+      <input id="quantity" type="number" min="1" value="1000">
+
+      <label for="unit">Unit</label>
+      <input id="unit" value="litres">
+
+      <label for="origin">Origin</label>
+      <input id="origin" placeholder="Sfax, Tunisia">
+
+      <button id="createLot">Create lot</button>
+    </section>
+
+    <section>
+      <h2>Record a step</h2>
+      <p class="hint">Manufacturer → Processed, Carrier → In transit, Distributor → Delivered. The contract enforces the role and the order.</p>
+
+      <label for="stepLotId">Lot ID</label>
+      <input id="stepLotId" type="number" min="1" value="1">
+
+      <label for="stepStatus">New status</label>
+      <select id="stepStatus">
+        <option value="1">Processed</option>
+        <option value="2">In transit</option>
+        <option value="3">Delivered</option>
+      </select>
+
+      <label for="description">Description</label>
+      <input id="description" placeholder="Quality control">
+
+      <label for="location">Location</label>
+      <input id="location" placeholder="Tunis, Tunisia">
+
+      <label for="documentHash">Document hash (optional, 0x + 64 hex characters)</label>
+      <input id="documentHash" placeholder="Leave empty for no document">
+
+      <button id="recordStep">Record step</button>
+    </section>
+  </main>
+</body>
+</html>
